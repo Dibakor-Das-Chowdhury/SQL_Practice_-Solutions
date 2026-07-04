@@ -1,4 +1,6 @@
 
+# Hospital Database Schema
+
 ```mermaid
 erDiagram
     patients {
