@@ -1,5 +1,5 @@
 # The GROUP BY statement groups the rows that have the same values.
 It is often used with a aggregiate functions, which is placed before the group by.
 
-# The HAVING clause is basically used with the GROUP BY and it is used instead of the WHERE clause.
- We cannot use WHERE Clause as condition with the aggregate functions, we can use HAVING clause instead. 
+# The HAVING clause is basically used with the GROUP BY and it is used instead of the WHERE clause and is placed after GROUP BY.
+ 
