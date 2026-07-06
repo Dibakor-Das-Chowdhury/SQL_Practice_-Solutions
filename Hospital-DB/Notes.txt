@@ -2,4 +2,7 @@
 It is often used with a aggregiate functions, which is placed before the group by.
 
 # The HAVING clause is basically used with the GROUP BY and it is used instead of the WHERE clause and is placed after GROUP BY.
+
+# The UNION operator is used to merge two SELECT statements. The values of the columns are added vertically. The UNION operator selects only the distinct values by default, but in order to select the duplicate values we need to use UNION ALL clause.
+
  
