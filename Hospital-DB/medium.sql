@@ -63,9 +63,78 @@ select day(admission_date) as day_number, count(*) as number_of_admissions from 
 --Q17. Show all columns for patient_id 542's most recent admission_date.
 select * from admissions group by patient_id having patient_id=542 and admission_date=max(admission_date);
 
---Q18.
---Q19.
---Q20.
+--Q18.Show patient_id, attending_doctor_id, and diagnosis for admissions that match one of the two criteria:
+--This is a critical question...so need to think about this questions
+-- patient_id is an odd number and attending_doctor_id is either 1, 5, or 19.
+-- attending_doctor_id contains a 2 and the length of patient_id is 3 characters.
+SELECT
+  patient_id,
+  attending_doctor_id,
+  diagnosis
+FROM admissions
+where
+  (patient_id % 2 !=0
+  and attending_doctor_id in ('1', '5', '19'))
+  or 
+  ( attending_doctor_id like ('%2%') and len(patient_id)=3);
 
+--Q19. Show first_name, last_name, and the total number of admissions attended for each doctor.
+--Every admission has been attended by a doctor.
+select
+  doctors.first_name,
+  doctors.last_name,
+  count(*)
+from admissions
+  join doctors on admissions.attending_doctor_id = doctors.doctor_id
+group by doctors.doctor_id;
 
+--Q20. For each doctor, display their id, full name, and the first and last admission date they attended.
+select
+  doctors.doctor_id,
+  concat(doctors.first_name, ' ',doctors.last_name),
+  min(admissions.admission_date) as first_admission_date,
+  max(admissions.admission_date) as last_admission_date
+from doctors
+  Join admissions on doctors.doctor_id = admissions.attending_doctor_id
+group by doctors.doctor_id;
 
+--Q21.Display the total amount of patients for each province. Order by descending.
+select
+  province_names.province_name as province_name,
+  count(patients.patient_id) as patient_count
+from patients
+  join province_names on patients.province_id = province_names.province_id
+group by province_names.province_id
+order by count(patients.patient_id) desc;
+
+--Q22.For every admission, display the patient's full name, their admission diagnosis, and their doctor's full name who diagnosed their problem.
+select
+  concat(
+    patients.first_name,
+    ' ',
+    patients.last_name
+  ) as patient_name,
+  admissions.diagnosis,
+  concat(
+    doctors.first_name,
+    ' ',
+    doctors.last_name
+  ) as doctor_name
+from patients
+  join admissions on patients.patient_id = admissions.patient_id
+  join doctors on doctors.doctor_id = admissions.attending_doctor_id;
+
+--Q23. Display the first name, last name and number of duplicate patients based on their first name and last name.
+--Ex: A patient with an identical name can be considered a duplicate.
+select
+  first_name,
+  last_name,
+  count(*) as num_of_duplicates
+from patients
+group by
+  first_name,
+  last_name
+  having count(*)>1;
+
+--Q24.
+--Q25.
