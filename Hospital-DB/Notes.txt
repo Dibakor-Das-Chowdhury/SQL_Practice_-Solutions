@@ -5,4 +5,10 @@ It is often used with a aggregiate functions, which is placed before the group b
 
 # The UNION operator is used to merge two SELECT statements. The values of the columns are added vertically. The UNION operator selects only the distinct values by default, but in order to select the duplicate values we need to use UNION ALL clause.
 
- # Do not use IS and  BETWEEN clauses at the same time.
+# Do not use IS and  BETWEEN clauses at the same time.
+
+#To chk if a value is odd then ckh-> if (value %2!=0);
+#To find any duplicate values in a coloumn:
+  1> Group  the column,  that holds the vlaue 
+  2> Count the number of rows of each group
+  3> if the number is>1 then the value has duplicates
