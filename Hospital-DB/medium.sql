@@ -136,5 +136,33 @@ group by
   last_name
   having count(*)>1;
 
---Q24.
---Q25.
+--Q24.Display patient's full name,
+--height in the units feet rounded to 1 decimal,
+--weight in the unit pounds rounded to 0 decimals,
+--birth_date,
+--gender non abbreviated.
+--Convert CM to feet by dividing by 30.48.
+--Convert KG to pounds by multiplying by 2.205.
+
+select
+  concat(first_name, ' ', last_name) as first_name,
+  round(height / 30.4, 1),
+  round(weight * 2.205, 0),
+  birth_date,
+  case
+    when gender = 'M' then 'MALE'
+    WHEN gender = 'F' then 'FEMALE'
+    else 'No gender found'
+  end
+from patients;
+
+--Q25.Show patient_id, first_name, last_name from patients whose does not have any records in the admissions table. (Their patient_id does not exist in any admissions.patient_id rows.)
+select
+  patient_id,
+  first_name,
+  last_name
+from patients
+where patient_id not in (
+    select patient_id
+    from admissions
+  );
