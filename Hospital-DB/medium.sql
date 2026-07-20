@@ -166,3 +166,14 @@ where patient_id not in (
     select patient_id
     from admissions
   );
+-- Q26. Display a single row with max_visits, min_visits, average_visits where the maximum, minimum and average number of admissions per day is calculated. Average is rounded to 2 decimal places.
+--a bit tricky but have to know about how sub-query works.
+select
+  max (patient_count),
+  min(patient_count),
+  round (avg(patient_count), 2)
+from (
+    SELECT count(*) as patient_count
+    FROM admissions
+    group by admission_date
+  )
