@@ -14,3 +14,5 @@ select
 from categories
   join products on categories.category_id = products.category_id
 group by categories.category_name;
+
+--Q3.
