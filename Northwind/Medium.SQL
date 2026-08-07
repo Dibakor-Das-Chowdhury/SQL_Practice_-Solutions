@@ -15,4 +15,5 @@ from categories
   join products on categories.category_id = products.category_id
 group by categories.category_name;
 
---Q3.
+--Q3.Show the total amount of orders for each year/month.
+
