@@ -14,3 +14,4 @@ It is often used with a aggregiate functions, which is placed before the group b
   3> if the number is>1 then the value has duplicates
 
 # The join clause follows the one-to-one relationship. So if any row of table A matches with the one/ multiples rows of table B, then it will return all the matched rows, which may also return duplicates.
+# Union merge the two columns in vertically like a stack, and UNION ALL clause returns the result including duplicate values while Only UNION clause returns without duplicates. 
