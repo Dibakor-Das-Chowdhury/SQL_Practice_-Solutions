@@ -83,3 +83,22 @@ where
   and city='Kingston'
  ;
 
+--One of the tough questions
+--Q6. Show the provinces that has more patients identified as 'M' than 'F'. Must only show full province_name
+select
+  province_names.province_name
+from patients
+  join province_names on patients.province_id = province_names.province_id
+group by province_names.province_name
+having
+  sum (
+    case
+      when patients.gender = 'M' THEN 1
+      ELSE 0
+    END
+  ) > sum (
+    case
+      when patients.gender = 'F' THEN 1
+      ELSE 0
+    END
+  );
